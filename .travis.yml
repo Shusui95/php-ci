@@ -5,7 +5,7 @@ branches:
     - master
     - dev
 before_install:
-  - sudo apt install -y php7.0 php7.1
+  - sudo apt install -y php7.0
 notifications:
   slack:
     rooms:
