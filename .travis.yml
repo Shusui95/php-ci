@@ -14,8 +14,8 @@ before_install:
   - sudo apt-get update
   - sudo apt install -y php7.0 php7.1
 script:
-  - php bin/console security:check
-  - php phpcs.phar -h
+  - php bin/console security:check --end-point=http://security.sensiolabs.org/check_lock
+  - php phpcs.phar src/
 notifications:
   slack:
     rooms:
