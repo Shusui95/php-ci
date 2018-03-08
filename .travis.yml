@@ -1,0 +1,17 @@
+language: php
+sudo: enabled
+branches:
+  only:
+    - master
+    - dev
+before_install:
+  - sudo apt install -y php7.0 php7.1
+notifications:
+  slack: shusui:dTl3cqRmVzzrJcvqxHRhUrbu
+    on_success: always
+    on_failure: always
+  email:
+    recipients:
+      - jere.marchand@gmail.com
+    on_success: never # default: change
+    on_failure: always # default: always
