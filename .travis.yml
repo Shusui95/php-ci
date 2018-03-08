@@ -5,7 +5,9 @@ branches:
     - master
     - dev
 before_install:
-  - sudo apt install -y php7.0
+  - sudo add-apt-repository ppa:ondrej/php
+  - sudo apt-get update
+  - sudo apt install -y php7.0 php7.1
 notifications:
   slack:
     rooms:
