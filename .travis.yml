@@ -15,6 +15,7 @@ before_install:
   - sudo apt install -y php7.0 php7.1
 script:
   - php bin/console security:check --end-point=http://security.sensiolabs.org/check_lock
+  - php phpcs.phar --exclude=PEAR.Commenting.FileComment,PEAR.Commenting.ClassComment,PEAR.Commenting.FunctionComment,Generic.Commenting.DocComment src/
   - php phpcs.phar src/
 notifications:
   slack:
