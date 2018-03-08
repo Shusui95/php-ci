@@ -6,7 +6,7 @@ branches:
     - master
     - dev
 before_install:
-  - ln -s ./bin/console ./app/console
+  - php composer.phar clear-cache
   - composer install
   - sudo add-apt-repository ppa:ondrej/php -y
   - sudo apt-get update
