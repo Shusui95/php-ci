@@ -1,10 +1,12 @@
 language: php
+php: "7.0"
 sudo: enabled
 branches:
   only:
     - master
     - dev
 before_install:
+  - ln -s ./bin/console ./app/console
   - composer install
   - sudo add-apt-repository ppa:ondrej/php -y
   - sudo apt-get update
