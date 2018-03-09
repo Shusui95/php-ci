@@ -39,3 +39,5 @@ deploy:
   app:
     master: prod-php-ci
     dev: dev-php-ci
+before_script:
+  - composer install
