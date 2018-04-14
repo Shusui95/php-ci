@@ -30,6 +30,8 @@ notifications:
     on_failure: always # default: always
 before_deploy:
   - composer install
+  - rm -f var/SymfonyRequirements.php
+  - rm -f var/bootstrap.php.cache
   - sudo add-apt-repository ppa:ondrej/php -y
   - sudo apt-get update
   - sudo apt install -y php7.0 php7.1
