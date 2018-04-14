@@ -1,17 +1,43 @@
 language: php
+php: "7.0"
 sudo: enabled
 branches:
   only:
     - master
     - dev
 before_install:
+  - composer install
+  - sudo add-apt-repository ppa:ondrej/php -y
+  - sudo apt-get update
   - sudo apt install -y php7.0 php7.1
+script:
+  - php bin/console security:check --end-point=http://security.sensiolabs.org/check_lock
+  - php phpcs.phar --exclude=PEAR.Commenting.FileComment,PEAR.Commenting.ClassComment,PEAR.Commenting.FunctionComment,Generic.Commenting.DocComment src/
 notifications:
-  slack: shusui:dTl3cqRmVzzrJcvqxHRhUrbu
+  slack:
+    rooms:
+      - shusui:dTl3cqRmVzzrJcvqxHRhUrbu
     on_success: always
     on_failure: always
+    template:
+          - "%{repository_slug}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+          - "Change view : %{compare_url}"
+          - "Build details : %{build_url}"
   email:
     recipients:
       - jere.marchand@gmail.com
     on_success: never # default: change
     on_failure: always # default: always
+before_deploy:
+  - composer install
+  - sudo add-apt-repository ppa:ondrej/php -y
+  - sudo apt-get update
+  - sudo apt install -y php7.0 php7.1
+deploy:
+  provider: heroku
+  api_key: $API_KEY
+  app:
+    master: prod-php-ci
+    dev: dev-php-ci
+before_script:
+  - composer install
