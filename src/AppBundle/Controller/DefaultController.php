@@ -9,7 +9,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
  * Class DefaultController
@@ -19,20 +18,9 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class DefaultController extends Controller
 {
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     *
-     * @Route("Hello world", name="helloWorld")
+     * @Route("/", name="hello_world")
      * @Method("GET")
      *
-     *
-     * @ApiDoc (
-     *
-     *  description="Simple hello world route",
-     *  section="Club",
-     *
-     *  parameters={
-     *  }
-     * )
      */
     public function indexAction(Request $request)
     {
