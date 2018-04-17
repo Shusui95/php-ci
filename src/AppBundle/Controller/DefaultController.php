@@ -41,7 +41,7 @@ class DefaultController extends Controller
      * @Method("GET")
      *
      */
-    public function homeAction(Request $request)
+    public function homeAction()
     {
         // replace this example code with whatever you need
         return $this->render(
